@@ -1,4 +1,6 @@
 import { body } from "express-validator";
+import { AvailableUserRole } from "../utils/constants.js";
+import { AvailableTaskStatues } from "../utils/constants.js";
 
 const userRegisterValidator = () => {
     return [
@@ -12,8 +14,6 @@ const userRegisterValidator = () => {
             .trim()
             .notEmpty()
             .withMessage("username is required")
-            .isLowercase()
-            .withMessage("the name should in lowercase")
             .isLength({min: 3})
             .withMessage("username shoud be atleast 3 characters long"),
         body("password")
@@ -28,16 +28,16 @@ const userRegisterValidator = () => {
 };
 const userLoginValidator = () => {
     return [
-        body("email").optional().isEmail().withMessage("Email is invalid"),
+        body("email").isEmail().withMessage("Email is invalid"),
         body("password").notEmpty().withMessage("Password is required"),
     ];
 };
 const userChangeCurrentPasswordValidator = () => {
     return [
-        body("oldpassword")
+        body("oldPassword")
         .notEmpty()
         .withMessage("Old password is required"),
-        body("new password")
+        body("newPassword")
         .notEmpty()
         .withMessage("new password is required"),
     ];
@@ -58,4 +58,73 @@ const userResetForgotValidator = () => {
         .withMessage("Password is required"),
     ];
 };
-export { userRegisterValidator, userLoginValidator, userChangeCurrentPasswordValidator, userForgotPasswordValidator, userResetForgotValidator };
+
+const createProjectValidator = () => {
+    return [
+        body("name")
+        .notEmpty()
+        .withMessage("name is required"),
+        body("description")
+        .optional(),
+    ];
+};
+const addMembertoProjectValidator = () => {
+    return [
+        body("email")
+        .trim()
+        .notEmpty()
+        .withMessage("email is required")
+        .isEmail()
+        .withMessage("email is invalid"),
+        body("role")
+        .trim()
+        .notEmpty()
+        .withMessage("role is required")
+        .isIn(AvailableUserRole)
+        .withMessage("role is invalid"),
+    ]
+};
+
+const createTaskValidator = () => {
+    return [
+        body("title")
+        .trim()
+        .notEmpty()
+        .withMessage("title is required"),
+        body("description")
+        .optional(),
+        body("status")
+        .optional()
+        .isIn(AvailableTaskStatues)
+        .withMessage("status is invalid"),
+    ]
+};
+
+const createSubTaskValidator = () => {
+    return [
+        body("title")
+        .trim()
+        .notEmpty()
+        .withMessage("title is required"),
+        body("isCompleted")
+        .optional()
+        .isBoolean()
+        .withMessage("isCompleted should be a boolean value"),
+    ]
+};
+
+
+const createNoteValidator = () => {
+  return [
+    body("title")
+      .trim()
+      .notEmpty()
+      .withMessage("Note title is required")
+      .isLength({ min: 3 })
+      .withMessage("Title must be at least 3 characters"),
+
+    body("content").trim().notEmpty().withMessage("Note content is required"),
+  ];
+};
+
+export { userRegisterValidator, userLoginValidator, userChangeCurrentPasswordValidator, userForgotPasswordValidator, userResetForgotValidator, createProjectValidator, addMembertoProjectValidator, createTaskValidator, createSubTaskValidator, createNoteValidator };
