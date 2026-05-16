@@ -1,154 +1,80 @@
-# TaskForge Backend 🚀
+# TaskForge 🚀
 
-A RESTful API for collaborative project management, enabling teams to manage projects, tasks, subtasks, and notes with role-based access control.
+**TaskForge** is a modern, collaborative project management platform designed for efficiency and elegance. It features a robust Node.js backend and a polished React frontend with a focus on modern aesthetics and seamless user workflows.
 
----
+## ✨ Features
 
-## 📌 Overview
-
-TaskForge Backend provides a secure and scalable backend for managing team projects. It supports authentication, project organization, task tracking, and collaboration features.
-
----
-
-## 👥 User Roles
-
-- **Admin** – Full control over projects and members
-- **Project Admin** – Manage tasks and project content
-- **Member** – View projects and update task progress
-
----
-
-## 🔑 Core Features
-
-### 🔐 Authentication & Authorization
-- JWT-based authentication
-- Email verification
-- Password reset & change
-- Refresh tokens
-- Role-based access control (RBAC)
+### 🔐 Authentication & Security
+- **Secure Login & Registration**: Modern UI with JWT-based authentication.
+- **Email Verification**: Mandatory email verification for new users.
+- **Password Recovery**: Complete "Forgot Password" and "Reset Password" utilities.
+- **Refresh Token Logic**: Seamless session persistence using HTTP-only cookies.
 
 ### 📁 Project Management
-- Create, update, delete projects
-- View project details and members
+- **Workspaces**: Create and manage multiple projects with distinct members.
+- **Role-Based Access**: Specialized permissions for **Admin**, **Project Admin**, and **Members**.
+- **Kanban Board**: Drag-and-drop style task tracking (Todo, In Progress, Done).
 
-### 👥 Team Management
-- Add/remove members
-- Assign roles within projects
+### 👥 Collaboration
+- **Team Management**: Invite members via email and assign specific roles.
+- **Task Hierarchy**: Tasks with descriptions, assignees, and nested subtasks.
+- **Project Notes**: Shared notes for project-level documentation and quick references.
 
-### ✅ Task Management
-- Create and assign tasks
-- Update task status (Todo, In Progress, Done)
-- Attach files to tasks
+## 🛠️ Tech Stack
 
-### 🧩 Subtasks
-- Create and manage subtasks
-- Members can mark completion
+### Frontend
+- **React 19 + Vite**
+- **Redux Toolkit** (State Management)
+- **Lucide React** (Modern Icons)
+- **Framer Motion** (Smooth Animations)
+- **Axios** (API Communication)
 
-### 📝 Notes
-- Admin-only note creation and management
-- Accessible to all project members
+### Backend
+- **Node.js & Express**
+- **MongoDB & Mongoose**
+- **Nodemailer & Mailtrap** (Email Services)
+- **JWT** (Authentication)
 
-### ❤️ Health Check
-- API status endpoint
+## 🚀 Getting Started
 
----
+### Prerequisites
+- Node.js installed
+- MongoDB instance (local or Atlas)
+- Mailtrap account (for testing emails)
 
-## 🛠️ API Structure
-
-### Auth (`/api/v1/auth`)
-- `POST /register`
-- `POST /login`
-- `POST /logout`
-- `GET /current-user`
-- `POST /change-password`
-- `POST /refresh-token`
-- `GET /verify-email/:token`
-- `POST /forgot-password`
-- `POST /reset-password/:token`
-
----
-
-### Projects (`/api/v1/projects`)
-- `GET /` – List projects
-- `POST /` – Create project
-- `GET /:projectId`
-- `PUT /:projectId`
-- `DELETE /:projectId`
-- Member management endpoints
-
----
-
-### Tasks (`/api/v1/tasks`)
-- `GET /:projectId`
-- `POST /:projectId`
-- `GET /:projectId/t/:taskId`
-- `PUT /:projectId/t/:taskId`
-- `DELETE /:projectId/t/:taskId`
-- Subtask endpoints
-
----
-
-### Notes (`/api/v1/notes`)
-- `GET /:projectId`
-- `POST /:projectId`
-- `GET /:projectId/n/:noteId`
-- `PUT /:projectId/n/:noteId`
-- `DELETE /:projectId/n/:noteId`
-
----
-
-### Health Check
-- `GET /api/v1/healthcheck`
-
----
-
-## 🔐 Security
-
-- JWT authentication with refresh tokens
-- Role-based authorization middleware
-- Input validation
-- Secure file uploads
-- Email verification & password reset
-
----
-
-## 📂 File Uploads
-
-- Multiple file attachments per task
-- Stored in `public/images`
-- Metadata tracking (URL, type, size)
-
----
-
-## 📊 Data Models
-
-### Roles
-- `admin`
-- `project_admin`
-- `member`
-
-### Task Status
-- `todo`
-- `in_progress`
-- `done`
-
----
-
-## 🎯 Success Criteria
-
-- Secure authentication system
-- Complete project lifecycle management
-- Role-based access control
-- Task & subtask hierarchy
-- File attachment support
-
----
-
-## ⚙️ Getting Started
-
+### 1. Setup Backend
 ```bash
-# Install dependencies
+# From the root directory
 npm install
-
-# Run server
+```
+Create a `.env` file in the root:
+```env
+PORT=8000
+MONGO_URI=your_mongodb_uri
+ACCESS_TOKEN_SECRET=your_secret
+REFRESH_TOKEN_SECRET=your_secret
+MAILTRAP_SMTP_USER=your_user
+MAILTRAP_SMTP_PASS=your_pass
+```
+Run the backend:
+```bash
 npm run dev
+```
+
+### 2. Setup Frontend
+```bash
+cd client
+npm install
+```
+Create a `.env` file in the `client` directory:
+```env
+VITE_API_BASE_URL=http://localhost:8000/api/v1
+```
+Run the frontend:
+```bash
+npm run dev
+```
+
+---
+
+Built with ❤️ by [Rakshan](https://github.com/rak1403)
