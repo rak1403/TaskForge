@@ -1,4 +1,4 @@
-# Koala Borator Backend 🚀
+# TaskForge Backend 🚀
 
 A RESTful API for collaborative project management, enabling teams to manage projects, tasks, subtasks, and notes with role-based access control.
 
@@ -6,7 +6,7 @@ A RESTful API for collaborative project management, enabling teams to manage pro
 
 ## 📌 Overview
 
-Koala Borator Backend provides a secure and scalable backend for managing team projects. It supports authentication, project organization, task tracking, and collaboration features.
+TaskForge Backend provides a secure and scalable backend for managing team projects. It supports authentication, project organization, task tracking, and collaboration features.
 
 ---
 
