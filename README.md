@@ -6,14 +6,12 @@
 
 ### 🔐 Authentication & Security
 - **Secure Login & Registration**: Modern UI with JWT-based authentication.
-- **Email Verification**: Mandatory email verification for new users.
 - **Password Recovery**: Complete "Forgot Password" and "Reset Password" utilities.
 - **Refresh Token Logic**: Seamless session persistence using HTTP-only cookies.
 
 ### 📁 Project Management
 - **Workspaces**: Create and manage multiple projects with distinct members.
 - **Role-Based Access**: Specialized permissions for **Admin**, **Project Admin**, and **Members**.
-- **Kanban Board**: Drag-and-drop style task tracking (Todo, In Progress, Done).
 
 ### 👥 Collaboration
 - **Team Management**: Invite members via email and assign specific roles.
@@ -76,5 +74,3 @@ npm run dev
 ```
 
 ---
-
-Built with ❤️ by [Rakshan](https://github.com/rak1403)
